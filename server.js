@@ -15,7 +15,15 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-  let reqPath = req.url.split('?')[0];
+  const reqPathRaw = req.url.split('?')[0];
+
+  if (reqPathRaw === '/health') {
+    res.writeHead(200, { 'Content-Type': 'text/plain; charset=UTF-8' });
+    res.end('ok');
+    return;
+  }
+
+  let reqPath = reqPathRaw;
   if (reqPath === '/') reqPath = '/index.html';
 
   const filePath = path.join(rootDir, reqPath);

@@ -1,32 +1,21 @@
-# DPCPlus Railway Demo
+# DPCPlus Max Conversion Demo
 
-This is a simple Railway-ready static site for the DPCPlus demo landing page.
+Railway-ready root-only deploy.
 
-## Deploy on Railway
-1. Upload this folder to GitHub or unzip it locally.
-2. Create a new Railway project.
-3. Point Railway to this project.
-4. Railway should detect Node automatically.
-5. Start command:
-   `npm start`
 ## Files
+- `index.html` -> optimized landing page
+- `server.js` -> root static server with `/health`
+- `package.json` -> start script for Railway
 
-- `index.html` -> the landing page
-- `server.js` -> tiny static server for Railway
-- `package.json` -> start script
-
+## Deploy
+1. Upload these files to GitHub repo root
+2. Deploy repo on Railway
+3. Ensure Railway public networking points to the active app port
+4. Test:
+   - `/`
+   - `/health`
 
 ## Notes
-- Demo pricing is placeholder content.
-- The form currently shows a demo alert only.
-- In production, connect the form to:
-  - email
-  - CRM
-  - scheduling tool
-  - webhook endpoint
-
-## Fast customizations
-- Replace `DPCPlus` branding text
-- Replace placeholder testimonials
-- Replace demo pricing
-- Add real privacy/terms links
+- This is a conversion-optimized demo using known information only
+- Pricing and testimonials are still placeholder content and should be replaced before production use
+- The form is demo-only until connected to email, CRM, or webhook

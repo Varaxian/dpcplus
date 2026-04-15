@@ -1,6 +1,6 @@
 {
-  "name": "dpcplus-demo-root",
-  "version": "1.0.0",
+  "name": "dpcplus-max-conversion",
+  "version": "1.1.0",
   "private": true,
   "main": "server.js",
   "scripts": {

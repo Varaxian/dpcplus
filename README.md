@@ -9,11 +9,12 @@ This is a simple Railway-ready static site for the DPCPlus demo landing page.
 4. Railway should detect Node automatically.
 5. Start command:
    `npm start`
-
 ## Files
-- `public/index.html` -> the landing page
+
+- `index.html` -> the landing page
 - `server.js` -> tiny static server for Railway
 - `package.json` -> start script
+
 
 ## Notes
 - Demo pricing is placeholder content.

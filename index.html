@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DPCPlus | Direct Primary Care, Simplified</title>
+  <meta name="description" content="Text your doctor. Get care fast. Pay one simple monthly price." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --bg-soft:#f8fafc;
+      --bg-accent:#f0f9ff;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#e2e8f0;
+      --dark:#020617;
+      --sky:#0369a1;
+      --sky-soft:#e0f2fe;
+      --green:#047857;
+      --shadow:0 20px 50px rgba(15,23,42,.08);
+      --radius:26px;
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.5;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+    .btn{
+      display:inline-block;
+      padding:16px 24px;
+      border-radius:18px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--dark);color:#fff;box-shadow:var(--shadow)}
+    .btn-secondary{border:1px solid #cbd5e1;background:#fff;color:var(--text)}
+    .pill{
+      display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;
+      border:1px solid #bae6fd;background:#f0f9ff;color:var(--sky);font-size:12px;font-weight:700;
+      letter-spacing:.02em
+    }
+    .eyebrow{
+      text-transform:uppercase;letter-spacing:.18em;color:var(--sky);font-size:12px;font-weight:800
+    }
+    header{
+      position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);
+      backdrop-filter:blur(10px);border-bottom:1px solid var(--line)
+    }
+    .nav{
+      display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:20px
+    }
+    .brand-title{font-size:22px;font-weight:900;letter-spacing:-.03em}
+    .brand-sub{font-size:12px;color:#64748b}
+    .nav-links{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+    .nav-links a{font-size:14px;color:#475569}
+    .hero{
+      background:linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%);
+      overflow:hidden;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:80px 0 90px
+    }
+    h1{
+      font-size:clamp(42px, 6vw, 68px);
+      line-height:1.02;letter-spacing:-.04em;margin:18px 0 0;font-weight:900
+    }
+    .lead{font-size:20px;color:var(--muted);max-width:760px;margin-top:24px}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 24px rgba(15,23,42,.04)
+    }
+    .stat{padding:20px}
+    .stat strong{display:block;font-size:28px;letter-spacing:-.03em}
+    .stat span{display:block;color:#64748b;font-size:14px;margin-top:6px}
+    .demo-card{padding:28px;box-shadow:var(--shadow)}
+    .demo-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px}
+    .demo-label{font-size:12px;font-weight:800;color:var(--green);background:#ecfdf5;border-radius:999px;padding:8px 12px}
+    .compare-list{display:grid;gap:14px}
+    .compare{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px;background:var(--bg-soft);
+      border:1px solid #f1f5f9;border-radius:18px;padding:18px
+    }
+    .mini-label{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .mini-before{color:#94a3b8}
+    .mini-after{color:var(--sky)}
+    .employer-cta{
+      margin-top:20px;border-radius:22px;background:var(--dark);color:#fff;padding:22px
+    }
+    .section{padding:88px 0}
+    .section-soft{background:var(--bg-soft)}
+    h2{font-size:clamp(32px,4vw,48px);line-height:1.06;letter-spacing:-.035em;margin:14px 0 0}
+    .subcopy{font-size:19px;color:var(--muted);max-width:800px;margin-top:16px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+    .info-card,.step-card,.quote-card,.roi-card{padding:26px}
+    .info-card h3,.roi-card h3{margin:0;font-size:20px}
+    .info-card p,.step-card p,.roi-card p{margin:12px 0 0;color:var(--muted)}
+    .pricing-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+    .pricing-card{padding:34px;box-shadow:var(--shadow)}
+    .price{font-size:62px;line-height:1;font-weight:900;letter-spacing:-.05em;margin-top:8px}
+    .price small{font-size:20px;color:#64748b;font-weight:600}
+    ul.clean{padding-left:18px;color:var(--muted)}
+    ul.clean li{margin:10px 0}
+    .dark{
+      background:var(--dark);color:#fff
+    }
+    .dark .subcopy{color:#cbd5e1}
+    .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+    .quote-card{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(6px)
+    }
+    .quote-card p{margin:0;color:#fff}
+    .quote-card span{display:block;margin-top:14px;color:#94a3b8;font-size:14px}
+    .employer-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+    .form-wrap{background:var(--bg-accent)}
+    .form-card{padding:34px;box-shadow:var(--shadow)}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+    input,select,textarea{
+      width:100%;padding:16px 18px;border-radius:18px;border:1px solid #cbd5e1;
+      font:inherit;color:var(--text);background:#fff
+    }
+    textarea{min-height:140px;grid-column:1 / -1;resize:vertical}
+    .full{grid-column:1 / -1}
+    button{
+      border:0;cursor:pointer
+    }
+    footer{border-top:1px solid var(--line);background:#fff}
+    .footer{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:26px 0;color:#64748b;font-size:14px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+    @media (max-width: 980px){
+      .hero-grid,.pricing-wrap,.employer-grid,.quote-grid{grid-template-columns:1fr}
+      .grid-4{grid-template-columns:1fr 1fr}
+      .grid-3{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      .nav-links{display:none}
+      .stats,.grid-4,.compare,form{grid-template-columns:1fr}
+      .section,.hero-grid{padding:64px 0}
+      .container{padding:0 18px}
+      .price{font-size:52px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div>
+        <div class="brand-title">DPCPlus</div>
+        <div class="brand-sub">Direct Primary Care, simplified</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#employers">For Employers</a>
+        <a href="#contact" class="btn btn-primary" style="padding:12px 18px;border-radius:999px">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill">No insurance headaches. No rushed visits.</div>
+          <h1>Text your doctor. Get care fast. Pay one simple monthly price.</h1>
+          <p class="lead">
+            DPCPlus gives you direct access to your doctor with same-day or next-day care, transparent pricing, and a membership model built around people instead of insurance confusion.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Get Started</a>
+            <a href="#pricing" class="btn btn-secondary">See Pricing</a>
+          </div>
+
+          <div class="stats">
+            <div class="card stat">
+              <strong>Same day</strong>
+              <span>Appointments when available</span>
+            </div>
+            <div class="card stat">
+              <strong>Direct access</strong>
+              <span>Call, text, and ongoing care</span>
+            </div>
+            <div class="card stat">
+              <strong>Flat monthly</strong>
+              <span>Predictable cost, clear value</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card demo-card">
+          <div class="demo-header">
+            <div>
+              <div style="font-weight:800">Why patients switch</div>
+              <div style="font-size:14px;color:#64748b;margin-top:4px">A clearer healthcare experience</div>
+            </div>
+            <div class="demo-label">Demo view</div>
+          </div>
+
+          <div class="compare-list">
+            <div class="compare">
+              <div>
+                <div class="mini-label mini-before">Before</div>
+                <div style="margin-top:6px;font-weight:700;color:#334155">Insurance confusion</div>
+              </div>
+              <div>
+                <div class="mini-label mini-after">After</div>
+                <div style="margin-top:6px;font-weight:800">One simple membership price</div>
+              </div>
+            </div>
+            <div class="compare">
+              <div>
+                <div class="mini-label mini-before">Before</div>
+                <div style="margin-top:6px;font-weight:700;color:#334155">Long waits for appointments</div>
+              </div>
+              <div>
+                <div class="mini-label mini-after">After</div>
+                <div style="margin-top:6px;font-weight:800">Fast access to care</div>
+              </div>
+            </div>
+            <div class="compare">
+              <div>
+                <div class="mini-label mini-before">Before</div>
+                <div style="margin-top:6px;font-weight:700;color:#334155">Feeling rushed</div>
+              </div>
+              <div>
+                <div class="mini-label mini-after">After</div>
+                <div style="margin-top:6px;font-weight:800">More direct doctor relationship</div>
+              </div>
+            </div>
+            <div class="compare">
+              <div>
+                <div class="mini-label mini-before">Before</div>
+                <div style="margin-top:6px;font-weight:700;color:#334155">Unknown out-of-pocket costs</div>
+              </div>
+              <div>
+                <div class="mini-label mini-after">After</div>
+                <div style="margin-top:6px;font-weight:800">Transparent expectations upfront</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="employer-cta">
+            <div style="font-weight:800">For Employers</div>
+            <p style="margin:10px 0 0;color:#cbd5e1">
+              Looking to reduce healthcare friction and improve employee access? DPCPlus can support employer-sponsored care without making the homepage confusing for patients.
+            </p>
+            <a href="#employers" style="display:inline-block;margin-top:16px;font-weight:800;text-decoration:underline;text-underline-offset:4px">Explore employer plans →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits" class="section">
+      <div class="container">
+        <div class="eyebrow">Benefits</div>
+        <h2>Why people say yes faster</h2>
+        <p class="subcopy">
+          The page is designed to reduce hesitation, clarify value, and make the next step obvious.
+        </p>
+
+        <div class="grid-4">
+          <div class="card info-card">
+            <h3>Direct doctor access</h3>
+            <p>Patients want to feel like they can actually reach someone who knows them.</p>
+          </div>
+          <div class="card info-card">
+            <h3>Transparent monthly pricing</h3>
+            <p>Predictable cost reduces the mental friction of getting care.</p>
+          </div>
+          <div class="card info-card">
+            <h3>Faster appointments</h3>
+            <p>Urgency converts better when the benefit is clearly immediate.</p>
+          </div>
+          <div class="card info-card">
+            <h3>Less complexity</h3>
+            <p>The page strips out jargon and gives users an easy path to act.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section section-soft">
+      <div class="container">
+        <div class="eyebrow">How it works</div>
+        <h2>A simple path from interest to care</h2>
+
+        <div class="grid-3">
+          <div class="card step-card">
+            <div class="eyebrow" style="letter-spacing:.08em">1. Join</div>
+            <p>Choose a membership and submit your information.</p>
+          </div>
+          <div class="card step-card">
+            <div class="eyebrow" style="letter-spacing:.08em">2. Connect</div>
+            <p>Get clear next steps and direct access details.</p>
+          </div>
+          <div class="card step-card">
+            <div class="eyebrow" style="letter-spacing:.08em">3. Get care</div>
+            <p>Use your membership for ongoing primary care support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="container pricing-wrap">
+        <div>
+          <div class="eyebrow">Pricing</div>
+          <h2>Simple pricing beats confusing billing</h2>
+          <p class="subcopy">
+            Use this section as a confidence-builder. Replace demo pricing with real numbers when ready.
+          </p>
+        </div>
+
+        <div class="card pricing-card">
+          <div style="font-size:14px;font-weight:800;color:#64748b">Starting at</div>
+          <div class="price">$99<small>/month</small></div>
+          <p style="margin-top:18px;color:#475569">
+            Includes direct primary care access, clearer expectations, and a membership model built for easier decision-making.
+          </p>
+          <ul class="clean">
+            <li>Direct doctor communication</li>
+            <li>Fast appointment access</li>
+            <li>Predictable monthly pricing</li>
+            <li>No insurance billing confusion</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" style="width:100%;text-align:center">Start Your Membership</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="container">
+        <div class="eyebrow" style="color:#7dd3fc">Social proof</div>
+        <h2>Trust grows when outcomes feel real</h2>
+        <p class="subcopy">
+          This section is intentionally built to support conversion. Swap in real testimonials and outcomes as soon as available.
+        </p>
+
+        <div class="quote-grid">
+          <div class="quote-card card">
+            <p>“I finally felt like I could reach my doctor without jumping through hoops.”</p>
+            <span>Patient testimonial</span>
+          </div>
+          <div class="quote-card card">
+            <p>“The membership model made the decision easier than dealing with another surprise bill.”</p>
+            <span>Member testimonial</span>
+          </div>
+          <div class="quote-card card">
+            <p>“What stood out most was speed, clarity, and an actual relationship with care.”</p>
+            <span>Patient testimonial</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="employers" class="section">
+      <div class="container employer-grid">
+        <div>
+          <div class="eyebrow">For Employers</div>
+          <h2>Reduce healthcare friction without making your team fight the system</h2>
+          <p class="subcopy">
+            This section is separated from the patient-first homepage message on purpose. It supports the back-end revenue strategy without weakening front-end conversion.
+          </p>
+        </div>
+
+        <div class="card roi-card" style="background:#f8fafc">
+          <div style="display:grid;gap:16px">
+            <div class="card" style="padding:18px;border-radius:18px">
+              <h3>Lower friction</h3>
+              <p>Give employees easier access to routine care.</p>
+            </div>
+            <div class="card" style="padding:18px;border-radius:18px">
+              <h3>Clearer costs</h3>
+              <p>Use a more predictable monthly care model.</p>
+            </div>
+            <div class="card" style="padding:18px;border-radius:18px">
+              <h3>Better experience</h3>
+              <p>Improve retention by reducing care frustration.</p>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary" style="margin-top:18px">Request Employer Info</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section form-wrap">
+      <div class="container" style="max-width:900px">
+        <div class="card form-card">
+          <div class="eyebrow">Get started</div>
+          <h2>Make the next step obvious</h2>
+          <p class="subcopy">
+            This demo form is built to convert. In production, connect it to your CRM, email workflow, or scheduling system.
+          </p>
+
+          <form onsubmit="event.preventDefault(); alert('Demo form submitted. Connect this to your CRM or inbox for production use.');">
+            <input placeholder="First name" />
+            <input placeholder="Last name" />
+            <input class="full" type="email" placeholder="Email" />
+            <input class="full" placeholder="Phone" />
+            <select class="full">
+              <option>I’m interested as a patient</option>
+              <option>I’m interested as an employer</option>
+            </select>
+            <textarea placeholder="Tell us what you're looking for"></textarea>
+            <button class="btn btn-primary full" type="submit">Request Information</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer">
+      <div>© 2026 DPCPlus Demo</div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

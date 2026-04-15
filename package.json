@@ -1,8 +1,7 @@
 {
-  "name": "dpcplus-railway-demo",
+  "name": "dpcplus-demo-root",
   "version": "1.0.0",
   "private": true,
-  "description": "Railway-ready demo landing page for DPCPlus",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
